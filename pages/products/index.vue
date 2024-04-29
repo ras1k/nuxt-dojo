@@ -1,6 +1,6 @@
 <template>
   <div>
-    lmao
+    lmao products
   </div>
 </template>
 
