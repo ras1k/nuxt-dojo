@@ -1,19 +1,18 @@
 <template>
   <div>
-    <h1>Products</h1>
     <div class="grid grid-cols-4 gap-5">
       <div v-for="p in products">
-        <NuxtLink :to="`/products/${p.id}`">{{ p.title }}</NuxtLink>
-        <img :src='p.image' alt="">
+        <ProductCard :product="p" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const { data: products } = await useFetch('https://fakestoreapi.com/products')
+  //  fetch the products
+  const { data: products } = await useFetch('https://fakestoreapi.com/products')
+
+  definePageMeta({
+    layout: "products",
+  })
 </script>
-
-<style lang="scss" scoped>
-
-</style>

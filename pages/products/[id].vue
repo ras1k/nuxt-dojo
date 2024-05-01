@@ -1,17 +1,18 @@
-<script setup>
-const { id } = useRoute().params;
-const uri = 'https://fakestoreapi.com/products/' + id ;
-
-const { data: product } = await useFetch(uri, {key: id})
-</script>
-
 <template>
   <div>
-    <p>{{ product.id }}</p>
-    <img :src="product.image" alt="">
-    <p>{{ product.title }}</p>
-    <p>{{ product.price }}</p>
+    <ProductDetails :product="product" />
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<script setup>
+  const { id } = useRoute().params
+  console.log(id, 'lmao id');
+  const uri = 'https://fakestoreapi.com/products/' + id
+
+  //  fetch the products
+  const { data: product } = await useFetch(uri, { key: id })
+
+  definePageMeta({
+    layout: "products",
+  })
+</script>
